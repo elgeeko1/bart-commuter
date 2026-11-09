@@ -236,7 +236,7 @@ A hook that formats a file fails the run, so commit again with its changes. Afte
 python3 tools/readme_script.py
 ```
 
-The workspace's [recommended extensions](../.vscode/extensions.json) run the same tools at the same versions: ruff, mypy, ShellCheck, and actionlint from `.venv`, Prettier and ESLint from `node_modules`, and mdformat, shfmt, and mbake through their pre-commit hooks on save. Pyright and markdownlint come from their extensions, whose versions the hooks match, so update those hooks when the extensions update.
+The workspace's [recommended extensions](../.vscode/extensions.json) run the same tools at the same versions: ruff, mypy, ShellCheck, and actionlint from `.venv`, Prettier and ESLint from `node_modules`, and mdformat, shfmt, and mbake through their pre-commit hooks on save. Pyright and markdownlint in the editor come from their extensions, whose versions can differ; the pre-commit hooks and CI are authoritative.
 
 ### CI
 

@@ -49,7 +49,6 @@ repos:
 
   - repo: local
     hooks:
-      # its version equals the ms-pyright.pyright VS Code extension's
       - id: pyright
         name: pyright
         entry: .venv/bin/pyright --pythonpath .venv/bin/python
@@ -116,7 +115,6 @@ repos:
 
   - repo: local
     hooks:
-      # runs from node_modules under Bun, at the version the DavidAnson.vscode-markdownlint extension bundles
       - id: markdownlint-cli2
         name: markdownlint-cli2
         entry: .venv/bin/bun --bun node_modules/.bin/markdownlint-cli2
