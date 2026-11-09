@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: 2026 Jeff C. Jensen
+# SPDX-License-Identifier: BSD-3-Clause
+
+root = true
+
+# shfmt reads its options here; these equal shfmt -i 2 -ci
+[[shell]]
+indent_style = space
+indent_size = 2
+switch_case_indent = true
+
+[{.agent-context,.claude}/**]
+ignore = true

@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2026 Jeff C. Jensen
+# SPDX-License-Identifier: BSD-3-Clause
+
+# check links to repository files and their heading anchors, without network requests
+offline = true
+include_fragments = "full"
+no_progress = true
+
+extensions = ["md"]
+
+exclude_path = ['(^|/)\.agent-context/', '(^|/)\.claude/']

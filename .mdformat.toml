@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Jeff C. Jensen
+# SPDX-License-Identifier: BSD-3-Clause
+
+# output matches the markdownlint rules
+wrap = "no"
+
+[plugin.tables]
+compact_tables = true

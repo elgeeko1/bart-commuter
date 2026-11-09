@@ -1,0 +1,141 @@
+# SPDX-FileCopyrightText: 2026 Jeff C. Jensen
+# SPDX-License-Identifier: BSD-3-Clause
+
+minimum_pre_commit_version: "4.0.0"
+
+exclude: ^(\.agent-context/|\.claude/|tests/fixtures/)
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      # recorded days are several MB each; GitHub warns at 50 MB
+      - id: check-added-large-files
+        args: [--maxkb=51200]
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-toml
+      # VS Code settings are JSON with comments
+      - id: check-json
+        exclude: ^\.vscode/
+      - id: detect-private-key
+      # license text stays verbatim
+      - id: end-of-file-fixer
+        exclude: ^LICENSE$
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: trailing-whitespace
+        exclude: ^LICENSE$
+
+  # the ruff and mypy revisions equal the dev dependency group, which the editor runs
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.22
+    hooks:
+      - id: ruff-format
+      - id: ruff-check
+        args: [--fix, --exit-non-zero-on-fix]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v2.3.0
+    hooks:
+      - id: mypy
+        args: []
+        pass_filenames: false
+        additional_dependencies:
+          - pytest==9.1.1
+
+  - repo: local
+    hooks:
+      # its version equals the ms-pyright.pyright VS Code extension's
+      - id: pyright
+        name: pyright
+        entry: .venv/bin/pyright --pythonpath .venv/bin/python
+        language: system
+        types_or: [python, pyi]
+        pass_filenames: false
+
+      # Prettier and ESLint have no Python distribution, so they run from node_modules under Bun
+      - id: prettier
+        name: prettier
+        entry: .venv/bin/bun --bun node_modules/.bin/prettier --write --ignore-unknown
+        language: system
+        types_or: [javascript, json, yaml]
+
+      - id: eslint
+        name: eslint
+        entry: .venv/bin/bun --bun node_modules/.bin/eslint --max-warnings=0
+        language: system
+        types: [javascript]
+
+      - id: readme-script
+        name: README holds the current loader
+        entry: python tools/readme_script.py --check
+        language: python
+        files: ^(README\.md|bart-commuter-loader\.js|tools/readme_script\.py)$
+        pass_filenames: false
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.38.0
+    hooks:
+      - id: yamllint
+        args: [--strict]
+
+  - repo: local
+    hooks:
+      # shellcheck-py supplies the shellcheck that actionlint runs on run scripts
+      - id: actionlint
+        name: actionlint
+        entry: actionlint
+        language: python
+        additional_dependencies:
+          - actionlint-py==1.7.12.25
+          - shellcheck-py==0.11.0.1
+        files: ^\.github/
+        pass_filenames: false
+
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.11.0.1
+    hooks:
+      - id: shellcheck
+
+  - repo: https://github.com/MaxWinterstein/shfmt-py
+    rev: v4.2.0
+    hooks:
+      - id: shfmt
+        args: [--write, --apply-ignore]
+
+  - repo: https://github.com/hukkin/mdformat
+    rev: 1.0.0
+    hooks:
+      - id: mdformat
+        additional_dependencies:
+          - mdformat-gfm==1.0.0
+
+  - repo: local
+    hooks:
+      # runs from node_modules under Bun, at the version the DavidAnson.vscode-markdownlint extension bundles
+      - id: markdownlint-cli2
+        name: markdownlint-cli2
+        entry: .venv/bin/bun --bun node_modules/.bin/markdownlint-cli2
+        language: system
+        types: [markdown]
+
+      - id: lychee
+        name: lychee
+        entry: lychee
+        language: python
+        additional_dependencies:
+          - lychee-bin==0.24.2
+        types: [markdown]
+        require_serial: true
+
+      - id: mbake-format
+        name: mbake format
+        entry: mbake format
+        language: python
+        additional_dependencies:
+          - mbake==1.5.0
+        types: [makefile]

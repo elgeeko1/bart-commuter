@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2026 Jeff C. Jensen
+# SPDX-License-Identifier: BSD-3-Clause
+
+external-sources=true
+source-path=SCRIPTDIR
+
+enable=require-variable-braces
+enable=quote-safe-variables
+enable=require-double-brackets

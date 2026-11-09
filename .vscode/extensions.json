@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "charliermarsh.ruff",
+    "DavidAnson.vscode-markdownlint",
+    "dbaeumer.vscode-eslint",
+    "emeraldwalk.RunOnSave",
+    "esbenp.prettier-vscode",
+    "jimeh.actionlint",
+    "ms-pyright.pyright",
+    "ms-python.mypy-type-checker",
+    "timonwong.shellcheck"
+  ]
+}

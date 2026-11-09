@@ -1,0 +1,50 @@
+# SPDX-FileCopyrightText: 2026 Jeff C. Jensen
+# SPDX-License-Identifier: BSD-3-Clause
+
+version: 2
+
+# one pull request moves versions shared by the Python tools and pre-commit hooks together
+multi-ecosystem-groups:
+  dev-tools:
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: chore(deps)
+
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: ci
+    groups:
+      actions:
+        patterns:
+          - "*"
+
+  - package-ecosystem: bun
+    directory: /
+    multi-ecosystem-group: dev-tools
+    patterns:
+      - "*"
+    cooldown:
+      default-days: 7
+
+  - package-ecosystem: pip
+    directory: /
+    multi-ecosystem-group: dev-tools
+    patterns:
+      - "*"
+    cooldown:
+      default-days: 7
+
+  - package-ecosystem: pre-commit
+    directory: /
+    multi-ecosystem-group: dev-tools
+    patterns:
+      - "*"
+    cooldown:
+      default-days: 7

@@ -1,0 +1,67 @@
+# SPDX-FileCopyrightText: 2026 Jeff C. Jensen
+# SPDX-License-Identifier: BSD-3-Clause
+
+# development tools and their tests; the widget itself has no Python
+
+[build-system]
+requires = ["setuptools==84.2.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bart-commuter-tools"
+version = "0"
+description = "Corpus recording, replay and test tooling for bart-commuter"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+bart-corpus = "bart_corpus.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[dependency-groups]
+dev = [
+  "actionlint-py==1.7.12.25",
+  "lychee-bin==0.24.2",
+  "mbake==1.5.0",
+  "mdformat==1.0.0",
+  "mdformat-gfm==1.0.0",
+  "mypy==2.3.0",
+  "pre-commit==4.7.0",
+  "pyright[nodejs]==1.1.414",
+  "pytest==9.1.1",
+  "pytest-cov==7.1.0",
+  "ruff==0.15.22",
+  "shellcheck-py==0.11.0.1",
+  "shfmt-py==4.2.0",
+  "yamllint==1.38.0",
+]
+
+[tool.ruff]
+target-version = "py312"
+src = ["src", "tools", "tests/python"]
+extend-exclude = [".agent-context"]
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "RUF", "SIM", "UP", "W"]
+# the formatter sets line length; long strings and comments stay whole
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src", "tools", "tests/python"]
+mypy_path = "src:tools"
+
+[tool.pyright]
+pythonVersion = "3.12"
+include = ["src", "tools", "tests/python"]
+extraPaths = ["src", "tools", "tests/python"]
+
+[tool.pytest.ini_options]
+minversion = "9.0"
+testpaths = ["tests/python"]
+pythonpath = ["src", "tools", "tests/python"]
+strict = true
+addopts = ["--import-mode=importlib"]

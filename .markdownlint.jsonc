@@ -1,0 +1,12 @@
+// SPDX-FileCopyrightText: 2026 Jeff C. Jensen
+// SPDX-License-Identifier: BSD-3-Clause
+{
+  "MD013": false,
+  // README images are sized side by side, which Markdown cannot express
+  "MD033": {
+    "allowed_elements": ["p", "img"]
+  },
+  "MD060": {
+    "style": "compact"
+  }
+}

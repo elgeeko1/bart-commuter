@@ -1,0 +1,5 @@
+# YAML files that Prettier and yamllint skip, and JSON that Prettier skips
+
+/.agent-context/
+/.claude/
+/tests/fixtures/

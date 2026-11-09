@@ -1,0 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Jeff C. Jensen
+# SPDX-License-Identifier: BSD-3-Clause
+
+[formatter]
+normalize_line_continuations = false

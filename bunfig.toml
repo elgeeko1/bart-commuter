@@ -1,0 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Jeff C. Jensen
+# SPDX-License-Identifier: BSD-3-Clause
+
+[test]
+root = "tests/js"
+coveragePathIgnorePatterns = ["tests/**", "tools/**"]
