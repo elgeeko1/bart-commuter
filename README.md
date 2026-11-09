@@ -1,6 +1,6 @@
 # BART Commuter
 
-![CI](https://github.com/elgeeko1/bart-commuter/actions/workflows/ci.yml/badge.svg) ![License](https://img.shields.io/github/license/elgeeko1/bart-commuter) [![codecov](https://codecov.io/github/elgeeko1/bart-commuter/graph/badge.svg?token=7LIG8P7CPJ)](https://codecov.io/github/elgeeko1/bart-commuter)
+![CI](https://github.com/elgeeko1/bart-commuter/actions/workflows/ci.yml/badge.svg) ![CodeQL](https://github.com/elgeeko1/bart-commuter/actions/workflows/github-code-scanning/codeql/badge.svg) ![License](https://img.shields.io/github/license/elgeeko1/bart-commuter) [![codecov](https://codecov.io/github/elgeeko1/bart-commuter/graph/badge.svg?token=7LIG8P7CPJ)](https://codecov.io/github/elgeeko1/bart-commuter)
 
 <p>
   <img src="doc/widgets-dark.png" alt="Every widget size on the Home Screen and Lock Screen in dark appearance, showing the next trains from West Oakland to Embarcadero and back" width="49%">
