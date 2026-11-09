@@ -32,20 +32,20 @@ repos:
 
   # the ruff and mypy revisions equal the dev dependency group, which the editor runs
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.22
+    rev: v0.17.3
     hooks:
       - id: ruff-format
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v2.3.0
+    rev: v2.4.1
     hooks:
       - id: mypy
         args: []
         pass_filenames: false
         additional_dependencies:
-          - pytest==9.1.1
+          - pytest==9.2.0
 
   - repo: local
     hooks:
